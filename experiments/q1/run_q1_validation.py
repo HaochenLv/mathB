@@ -12,7 +12,14 @@ from dataclasses import dataclass
 if __package__ in (None, ""):
     sys.path.insert(0, str(Path(__file__).resolve().parents[2]))
 
-from src.geometry.localization import EPS, LocalizationRegion, Point, RegionStatus, point_in_convex_polygon
+from src.geometry.localization import (
+    EPS,
+    LocalizationRegion,
+    Point,
+    RegionStatus,
+    point_in_convex_polygon,
+    point_satisfies_measurement,
+)
 
 
 @dataclass
@@ -59,12 +66,36 @@ def run_validation(cases: int = 500, seed: int = 20260910) -> ValidationSummary:
         failure = ""
         for step, (sensor, theta) in enumerate(measurements, 1):
             region.add_measurement(sensor.x, sensor.y, theta)
-            if not region.contains(target):
+            target_is_feasible = all(
+                point_satisfies_measurement(
+                    target,
+                    measurement,
+                    delta_deg=region.delta_deg,
+                    eps=region.eps,
+                )
+                for measurement in region.measurements
+            )
+            if not target_is_feasible:
                 failure = f"true target rejected at step {step}"
+                break
+            if region.status is RegionStatus.EMPTY:
+                failure = f"known feasible target classified EMPTY at step {step}"
                 break
             if region.status is RegionStatus.BOUNDED:
                 area = region.area()
                 diameter = region.diameter().length
+                if not all(
+                    point_satisfies_measurement(
+                        vertex,
+                        measurement,
+                        delta_deg=region.delta_deg,
+                        eps=100.0 * EPS,
+                    )
+                    for vertex in region.vertices
+                    for measurement in region.measurements
+                ):
+                    failure = f"bounded vertex violates a measurement at step {step}"
+                    break
                 if previous_vertices is not None and not all(
                     point_in_convex_polygon(vertex, previous_vertices, 100.0 * EPS)
                     for vertex in region.vertices

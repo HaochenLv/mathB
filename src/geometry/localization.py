@@ -9,6 +9,7 @@ from __future__ import annotations
 
 from dataclasses import dataclass
 from enum import Enum
+from fractions import Fraction
 import math
 from typing import Iterable, Sequence
 
@@ -141,6 +142,39 @@ def _line_intersection(
     )
 
 
+def _exact_feasible_intersections(
+    halfplanes: Sequence[_HalfPlane], eps: float
+) -> list[Point]:
+    """Recover feasible vertices when floating-point cancellation hides them.
+
+    This slow path is used only before declaring a system empty.  It treats the
+    already-computed binary floating-point coefficients as exact rationals, so
+    it removes intersection/evaluation roundoff without widening ``eps``.
+    """
+
+    exact_halfplanes = [
+        tuple(Fraction.from_float(value) for value in (hp.a, hp.b, hp.c))
+        for hp in halfplanes
+    ]
+    exact_eps = Fraction(eps)
+    feasible: list[Point] = []
+    for first_index, (first_a, first_b, first_c) in enumerate(exact_halfplanes):
+        for second_a, second_b, second_c in exact_halfplanes[first_index + 1 :]:
+            determinant = first_a * second_b - second_a * first_b
+            if determinant == 0:
+                continue
+            x = (first_c * second_b - second_c * first_b) / determinant
+            y = (first_a * second_c - second_a * first_c) / determinant
+            if all(
+                a * x + b * y - c <= exact_eps
+                for a, b, c in exact_halfplanes
+            ):
+                point = Point(float(x), float(y))
+                if math.isfinite(point.x) and math.isfinite(point.y):
+                    feasible.append(point)
+    return feasible
+
+
 def _distance_squared(first: Point, second: Point) -> float:
     dx = first.x - second.x
     dy = first.y - second.y
@@ -270,6 +304,13 @@ def construct_bounded_polygon(
         all(halfplane.contains(point, eps) for halfplane in halfplanes)
         for point in witnesses
     )
+
+    if not feasible and not has_feasible_witness:
+        # A near-tangent pair can intersect very far from the sensors.  Cramer's
+        # rule then loses enough absolute precision that a truly active
+        # constraint may miss ``eps`` by a few ulps.  Recheck exact signs before
+        # making the irreversible EMPTY classification.
+        feasible = _exact_feasible_intersections(halfplanes, eps)
 
     if not feasible and not has_feasible_witness:
         if _all_normals_parallel(halfplanes, eps):
@@ -476,4 +517,3 @@ class LocalizationRegion:
     def _require_bounded(self) -> None:
         if self.status is not RegionStatus.BOUNDED:
             raise ValueError(f"operation requires BOUNDED region, got {self.status.value}")
-
