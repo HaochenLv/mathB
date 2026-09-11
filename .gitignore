@@ -3,3 +3,7 @@ __pycache__/
 .pytest_cache/
 .tmp_q1_refs/
 reference/
+
+# Reproducible Q2 experiment caches / dense pointwise export
+results/q2/*.meta.json
+results/q2/q2_target_space_map.csv

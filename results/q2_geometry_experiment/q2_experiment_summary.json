@@ -1,0 +1,281 @@
+{
+  "configuration": {
+    "grid_step": 100.0,
+    "x_range": [
+      -500.0,
+      1800.0
+    ],
+    "y_range": [
+      -1800.0,
+      1800.0
+    ],
+    "candidate_count": 888,
+    "refined_x_range": [
+      350.0,
+      750.0
+    ],
+    "refined_abs_y_range": [
+      250.0,
+      850.0
+    ],
+    "refined_grid_step": 50.0,
+    "refined_candidate_count": 234,
+    "target_radii": [
+      50.0,
+      100.0,
+      150.0,
+      200.0,
+      250.0,
+      300.0,
+      350.0,
+      400.0,
+      450.0,
+      500.0,
+      550.0,
+      600.0,
+      650.0,
+      700.0,
+      750.0,
+      800.0,
+      850.0,
+      900.0,
+      950.0,
+      1000.0,
+      1050.0,
+      1100.0,
+      1150.0,
+      1200.0,
+      1250.0,
+      1300.0,
+      1350.0,
+      1400.0,
+      1450.0,
+      1500.0
+    ],
+    "target_angles_deg": [
+      -1.0,
+      -0.75,
+      -0.5,
+      -0.25,
+      0.0,
+      0.25,
+      0.5,
+      0.75,
+      1.0
+    ],
+    "target_count": 270,
+    "second_errors_deg": [
+      -1.0,
+      -0.5,
+      0.0,
+      0.5,
+      1.0
+    ],
+    "coarse_scenario_count": 1198800,
+    "refined_scenario_count": 315900,
+    "total_scenario_count": 1514700,
+    "undefined_bearing_scenario_count": 75,
+    "q1_localization_evaluation_count": 1514625
+  },
+  "coarse_best_candidate": {
+    "x": 600.0,
+    "y": -500.0,
+    "distance_from_s1": 781.0249675906655,
+    "angle_from_first_bearing": -39.80557109226519,
+    "coverage_ratio": 0.43333333333333335,
+    "valid_polygon_ratio": 1.0,
+    "diameter_pass_ratio": 0.47333333333333333,
+    "circle_coverage_pass_ratio": 0.9807407407407407,
+    "clear_ready_outcome_ratio": 0.4540740740740741,
+    "median_diameter": 41.28509492330754,
+    "p90_diameter": 142.31165195493062,
+    "max_valid_diameter": 204.94231755376217,
+    "robust_pass_count": 117,
+    "target_count": 270,
+    "outcome_count": 1350,
+    "valid_polygon_count": 1350,
+    "diameter_pass_count": 639,
+    "circle_coverage_pass_count": 1324,
+    "clear_ready_outcome_count": 613,
+    "circle_blocked_diameter_pass_count": 26,
+    "undefined_target_count": 0
+  },
+  "best_candidate": {
+    "x": 550.0,
+    "y": -400.0,
+    "distance_from_s1": 680.0735254367721,
+    "angle_from_first_bearing": -36.02737338510361,
+    "coverage_ratio": 0.43333333333333335,
+    "valid_polygon_ratio": 1.0,
+    "diameter_pass_ratio": 0.4792592592592593,
+    "circle_coverage_pass_ratio": 0.9807407407407407,
+    "clear_ready_outcome_ratio": 0.46,
+    "median_diameter": 43.04384743401433,
+    "p90_diameter": 179.54391288429156,
+    "max_valid_diameter": 274.0025766721517,
+    "robust_pass_count": 117,
+    "target_count": 270,
+    "outcome_count": 1350,
+    "valid_polygon_count": 1350,
+    "diameter_pass_count": 647,
+    "circle_coverage_pass_count": 1324,
+    "clear_ready_outcome_count": 621,
+    "circle_blocked_diameter_pass_count": 26,
+    "undefined_target_count": 0
+  },
+  "strict_candidate_count": 0,
+  "strict_candidate_extent": {
+    "count": 0,
+    "bounds": null
+  },
+  "candidate_extent_ge_0_90": {
+    "count": 0,
+    "bounds": null
+  },
+  "candidate_extent_ge_0_95": {
+    "count": 0,
+    "bounds": null
+  },
+  "candidate_extent_ge_0_40": {
+    "count": 78,
+    "bounds": {
+      "x_min": 450.0,
+      "x_max": 650.0,
+      "y_min": -750.0,
+      "y_max": 750.0
+    }
+  },
+  "candidate_extent_ge_0_425": {
+    "count": 34,
+    "bounds": {
+      "x_min": 500.0,
+      "x_max": 600.0,
+      "y_min": -650.0,
+      "y_max": 650.0
+    }
+  },
+  "coarse_outcome_totals": {
+    "outcome_count": 1198800,
+    "valid_polygon_ratio": 0.9876017684351017,
+    "diameter_pass_ratio": 0.07143143143143144,
+    "circle_coverage_pass_ratio": 0.9710852519185853,
+    "clear_ready_outcome_ratio": 0.0669336002669336,
+    "diameter_passes_blocked_by_circle": 5392,
+    "circle_block_fraction_among_diameter_passes": 0.06296711509715994
+  },
+  "symmetry": {
+    "coverage_ratio": {
+      "max_absolute_error": 0.0,
+      "mean_absolute_error": 0.0
+    },
+    "valid_polygon_ratio": {
+      "max_absolute_error": 0.0,
+      "mean_absolute_error": 0.0
+    },
+    "diameter_pass_ratio": {
+      "max_absolute_error": 0.0,
+      "mean_absolute_error": 0.0
+    },
+    "circle_coverage_pass_ratio": {
+      "max_absolute_error": 0.0,
+      "mean_absolute_error": 0.0
+    }
+  },
+  "centerline": {
+    "max_coverage_ratio": 0.0,
+    "mean_coverage_ratio": 0.0
+  },
+  "far_distance_ge_2000": {
+    "candidate_count": 88,
+    "max_coverage_ratio": 0.0,
+    "mean_coverage_ratio": 0.0
+  },
+  "distance_slices": [
+    {
+      "target_radius": 300.0,
+      "max_coverage_ratio": 1.0,
+      "best_x": 100.0,
+      "best_y": -200.0,
+      "best_distance_from_s1": 223.60679774997897,
+      "candidate_count_ge_0_90": 102,
+      "candidate_count_ge_0_95": 102,
+      "strict_candidate_count": 102,
+      "ge_0_90_x_min": 0.0,
+      "ge_0_90_x_max": 700.0,
+      "ge_0_90_y_min": -1000.0,
+      "ge_0_90_y_max": 1000.0
+    },
+    {
+      "target_radius": 600.0,
+      "max_coverage_ratio": 1.0,
+      "best_x": 400.0,
+      "best_y": -300.0,
+      "best_distance_from_s1": 500.0,
+      "candidate_count_ge_0_90": 52,
+      "candidate_count_ge_0_95": 52,
+      "strict_candidate_count": 52,
+      "ge_0_90_x_min": 400.0,
+      "ge_0_90_x_max": 800.0,
+      "ge_0_90_y_min": -800.0,
+      "ge_0_90_y_max": 800.0
+    },
+    {
+      "target_radius": 900.0,
+      "max_coverage_ratio": 1.0,
+      "best_x": 800.0,
+      "best_y": -300.0,
+      "best_distance_from_s1": 854.4003745317531,
+      "candidate_count_ge_0_90": 10,
+      "candidate_count_ge_0_95": 10,
+      "strict_candidate_count": 10,
+      "ge_0_90_x_min": 800.0,
+      "ge_0_90_x_max": 1000.0,
+      "ge_0_90_y_min": -500.0,
+      "ge_0_90_y_max": 500.0
+    },
+    {
+      "target_radius": 1200.0,
+      "max_coverage_ratio": 0.0,
+      "best_x": 0.0,
+      "best_y": -100.0,
+      "best_distance_from_s1": 100.0,
+      "candidate_count_ge_0_90": 0,
+      "candidate_count_ge_0_95": 0,
+      "strict_candidate_count": 0,
+      "ge_0_90_x_min": "",
+      "ge_0_90_x_max": "",
+      "ge_0_90_y_min": "",
+      "ge_0_90_y_max": ""
+    },
+    {
+      "target_radius": 1500.0,
+      "max_coverage_ratio": 0.0,
+      "best_x": 100.0,
+      "best_y": -100.0,
+      "best_distance_from_s1": 141.4213562373095,
+      "candidate_count_ge_0_90": 0,
+      "candidate_count_ge_0_95": 0,
+      "strict_candidate_count": 0,
+      "ge_0_90_x_min": "",
+      "ge_0_90_x_max": "",
+      "ge_0_90_y_min": "",
+      "ge_0_90_y_max": ""
+    }
+  ],
+  "outputs": {
+    "figures": [
+      "C:\\mathB\\figures\\q2_geometry_experiment\\figure1_first_bearing_uncertainty.png",
+      "C:\\mathB\\figures\\q2_geometry_experiment\\figure2_s2_coverage_heatmap.png",
+      "C:\\mathB\\figures\\q2_geometry_experiment\\figure3_candidate_regions.png",
+      "C:\\mathB\\figures\\q2_geometry_experiment\\figure4_distance_slices.png"
+    ],
+    "csv": [
+      "C:\\mathB\\results\\q2_geometry_experiment\\q2_s2_grid_metrics.csv",
+      "C:\\mathB\\results\\q2_geometry_experiment\\q2_s2_refined_metrics.csv",
+      "C:\\mathB\\results\\q2_geometry_experiment\\q2_top_candidates.csv",
+      "C:\\mathB\\results\\q2_geometry_experiment\\q2_distance_slice_summary.csv",
+      "C:\\mathB\\results\\q2_geometry_experiment\\q2_distance_slice_grid.csv"
+    ]
+  },
+  "elapsed_seconds": 63.29509280000002
+}
